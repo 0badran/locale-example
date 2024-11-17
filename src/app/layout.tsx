@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import './globals.css'
 
 export default async function RootLayout({
   children
@@ -13,7 +14,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
